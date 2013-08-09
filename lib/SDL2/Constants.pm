@@ -1,5 +1,19 @@
 package SDL2::Constants;
 use warnings;
+use vars qw(@ISA @EXPORT @EXPORT_OK);
+require Exporter;
+require DynaLoader;
+our @ISA = qw(Exporter DynaLoader);
+
+use SDL2::Internal::Loader;
+if (check_and_load(__PACKAGE__)) {
+  bootstrap SDL2::Constants;
+}
+else {
+  warn "WARNING: " . __PACKAGE__ . " is not available\n";
+}
+
+
 use base 'Exporter';
 use Config;
 
@@ -76,7 +90,54 @@ our %EXPORT_TAGS = (
         SDL_NUM_LOG_PRIORITIES
 
         )
+    ],
+    'SDL2::Texture/access' => [
+        qw(
+        SDL_TEXTUREACCESS_STATIC
+        SDL_TEXTUREACCESS_STREAMING
+        )
+    ],
+    'SDL2::Texture/pixelformat' => [
+       qw(
+        SDL_PIXELFORMAT_UNKNOWN
+        SDL_PIXELFORMAT_INDEX1LSB
+        SDL_PIXELFORMAT_INDEX1MSB
+        SDL_PIXELFORMAT_INDEX4LSB
+        SDL_PIXELFORMAT_INDEX4MSB
+        SDL_PIXELFORMAT_INDEX8
+        SDL_PIXELFORMAT_RGB332
+        SDL_PIXELFORMAT_RGB444
+        SDL_PIXELFORMAT_RGB555
+        SDL_PIXELFORMAT_BGR555
+        SDL_PIXELFORMAT_ARGB4444
+        SDL_PIXELFORMAT_RGBA4444
+        SDL_PIXELFORMAT_ABGR4444
+        SDL_PIXELFORMAT_BGRA4444
+        SDL_PIXELFORMAT_ARGB1555
+        SDL_PIXELFORMAT_RGBA5551
+        SDL_PIXELFORMAT_ABGR1555
+        SDL_PIXELFORMAT_BGRA5551
+        SDL_PIXELFORMAT_RGB565
+        SDL_PIXELFORMAT_BGR565
+        SDL_PIXELFORMAT_RGB24
+        SDL_PIXELFORMAT_BGR24
+        SDL_PIXELFORMAT_RGB888
+        SDL_PIXELFORMAT_RGBX8888
+        SDL_PIXELFORMAT_BGR888
+        SDL_PIXELFORMAT_BGRX8888
+        SDL_PIXELFORMAT_ARGB8888
+        SDL_PIXELFORMAT_RGBA8888
+        SDL_PIXELFORMAT_ABGR8888
+        SDL_PIXELFORMAT_BGRA8888
+        SDL_PIXELFORMAT_ARGB2101010
+        SDL_PIXELFORMAT_YV12
+        SDL_PIXELFORMAT_IYUV
+        SDL_PIXELFORMAT_YUY2
+        SDL_PIXELFORMAT_UYVY
+        SDL_PIXELFORMAT_YVYU
+        )
     ]
+
 );
 
 #From https://github.com/PerlGameDev/SDL/blob/master/lib/SDL/Constants.pm#L609
