@@ -16,8 +16,8 @@ before_install:
   - git clone https://github.com/PerlGameDev/Alien-SDL2
   - cd Alien-SDL2
   - cat ./cpan-deps | cpanm --sudo --notest -v
-  - cat ./cpan-deps
-  - dpkg -l
+#  - cat ./cpan-deps
+#  - dpkg -l
   - perl ./Build.PL --travis
   - ./Build
   - sudo ./Build install
