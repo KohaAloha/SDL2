@@ -13,11 +13,11 @@ before_install:
   - sudo apt-get install automake
 
 # install Alien-SDL2 deps first...
+  - git clone https://github.com/PerlGameDev/Alien-SDL2
+  - cd Alien-SDL2
   - cat ./cpan-deps | cpanm --sudo --notest -v
   - cat ./cpan-deps
   - dpkg -l
-  - git clone https://github.com/PerlGameDev/Alien-SDL2
-  - cd Alien-SDL2
   - perl ./Build.PL --travis
   - ./Build
   - sudo ./Build install
