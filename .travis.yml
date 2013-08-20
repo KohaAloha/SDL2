@@ -1,5 +1,4 @@
-language: perl
-perl:
+language: objective-c
 #  - "5.10"
 #  - "5.12"
 #  - "5.14"
@@ -8,9 +7,9 @@ perl:
 
 before_install:
 # install tiff
-  - sudo apt-get -y purge ruby libtiff4 libtiff4-dev libtiffxx0c2 zlib1g-dev
-  - sudo apt-get autoremove
-  - sudo apt-get install automake
+#  - sudo apt-get -y purge ruby libtiff4 libtiff4-dev libtiffxx0c2 zlib1g-dev
+#  - sudo apt-get autoremove
+#  - sudo apt-get install automake
 
 # install Alien-SDL2 deps first...
   - git clone https://github.com/PerlGameDev/Alien-SDL2
