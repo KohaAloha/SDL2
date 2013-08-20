@@ -24,6 +24,10 @@ before_install:
   - prove
   - cd ..
 
+# start X...
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+
 install:
 #  - perl ./Build.PL --travis
   - perl ./Build.PL
