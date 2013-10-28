@@ -37,9 +37,12 @@ get_video_driver ( index )
     OUTPUT:
         RETVAL
 
+
 SDL_Surface*
 video_load_BMP ( filename )
     char *filename
+    PREINIT:
+        char* CLASS = "SDL2::Surface";
     CODE:
         RETVAL = SDL_LoadBMP(filename);
     OUTPUT:
