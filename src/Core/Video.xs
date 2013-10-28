@@ -22,14 +22,12 @@ get_current_video_driver ( )
     OUTPUT:
         RETVAL
 
-
 int
-get_num_video_drivers () 
+get_num_video_drivers ()
     CODE:
         RETVAL = SDL_GetNumVideoDrivers();
     OUTPUT:
         RETVAL
-
 
 const char *
 get_video_driver ( index )
@@ -39,4 +37,10 @@ get_video_driver ( index )
     OUTPUT:
         RETVAL
 
-
+SDL_Surface*
+video_load_BMP ( filename )
+    char *filename
+    CODE:
+        RETVAL = SDL_LoadBMP(filename);
+    OUTPUT:
+        RETVAL
