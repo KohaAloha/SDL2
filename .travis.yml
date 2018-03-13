@@ -20,13 +20,13 @@ before_install:
 # install Alien-SDL2 deps first...
   - git clone https://github.com/KohaAloha/Alien-SDL2
   - cd Alien-SDL2
-  - cat ./cpan-deps | cpanm --sudo --notest -v
+  - cat ./cpan-deps | cpanm --sudo --notest
 #  - cat ./cpan-deps
 #  - dpkg -l
   - perl ./Build.PL --travis 1
   - ./Build
   - sudo ./Build install
-  - prove
+#  - prove
   - cd ..
 
 install:
