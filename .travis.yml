@@ -9,7 +9,7 @@ perl:
 before_install:
 # install tiff
   - sudo apt-get update
-  - sudo apt-get -y purge ruby libtiff4 libtiff4-dev libtiffxx0c2 zlib1g-dev
+  - sudo apt-get -y purge ruby '^libtiff.*' zlib1g-dev
   - sudo apt-get autoremove
   - sudo apt-get install automake libxmu-dev libxmu6 libxmu-headers libxmuu1 xpra xserver-xorg-video-dummy freeglut3-dev mesa-utils
   - "xpra --xvfb=\"Xorg +extension GLX -config `pwd`/dummy.xorg.conf -logfile ${HOME}/.xpra/xorg.log\"  start :9"
@@ -18,12 +18,12 @@ before_install:
   - glxinfo
 
 # install Alien-SDL2 deps first...
-  - git clone https://github.com/PerlGameDev/Alien-SDL2
+  - git clone https://github.com/KohaAloha/Alien-SDL2
   - cd Alien-SDL2
   - cat ./cpan-deps | cpanm --sudo --notest -v
 #  - cat ./cpan-deps
 #  - dpkg -l
-  - perl ./Build.PL --travis
+  - perl ./Build.PL --travis 1
   - ./Build
   - sudo ./Build install
   - prove
