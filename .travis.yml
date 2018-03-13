@@ -1,0 +1,44 @@
+language: perl
+perl:
+  - "5.10"
+  - "5.12"
+  - "5.14"
+  - "5.16"
+  - "5.18"
+
+before_install:
+# install tiff
+  - sudo apt-get update
+  - sudo apt-get -y purge ruby '^libtiff.*' zlib1g-dev
+  - sudo apt-get autoremove
+  - sudo apt-get install libegl1-mesa-dev libgles2-mesa-dev
+  - sudo apt-get install automake libxmu-dev libxmu6 libxmu-headers libxmuu1 xpra xserver-xorg-video-dummy freeglut3-dev mesa-utils
+  - sudo apt-get install libsdl2-dev  libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev  libsdl2-ttf-dev
+  - sudo apt-get install libwebp-dev zlib1g-dev libsmpeg-dev libtiff5-dev libpng12-dev libogg-dev libvorbis-dev 
+  - "xpra --xvfb=\"Xorg +extension GLX -config `pwd`/dummy.xorg.conf -logfile ${HOME}/.xpra/xorg.log\"  start :9"
+  - export DISPLAY=:9
+  - ps -ef|grep xpra
+  - glxinfo
+
+# install Alien-SDL2 deps first...
+  - git clone https://github.com/KohaAloha/Alien-SDL2
+  - cd Alien-SDL2
+  - cat ./cpan-deps | cpanm --sudo --notest
+#  - cat ./cpan-deps
+#  - dpkg -l
+  - perl ./Build.PL --travis 1
+  - ./Build
+  - sudo ./Build install
+#  - prove
+  - cd ..
+
+install:
+  - perl ./Build.PL
+  - ./Build
+  - sudo ./Build install
+
+script:
+  - prove -v
+
+notifications:
+  irc: "irc.perl.org#sdl-xxx"
