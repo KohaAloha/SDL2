@@ -38,4 +38,4 @@ script:
   - prove -v
 
 notifications:
-  irc: "irc.perl.org#sdl"
+  irc: "irc.perl.org#sdl-xxx"
