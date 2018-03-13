@@ -1,3 +1,5 @@
+# SDL2 [![Build Status](https://travis-ci.org/KohaAloha/SDL2.svg?branch=master)](https://travis-ci.org/KohaAloha/SDL2)
+
 # SDL2 - Perl Bindings for libsdl2
 
 ## Requires
