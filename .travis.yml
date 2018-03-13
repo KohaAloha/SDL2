@@ -11,6 +11,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get -y purge ruby '^libtiff.*' zlib1g-dev
   - sudo apt-get autoremove
+  - sudo apt-get install libegl1-mesa-dev libgles2-mesa-dev
   - sudo apt-get install automake libxmu-dev libxmu6 libxmu-headers libxmuu1 xpra xserver-xorg-video-dummy freeglut3-dev mesa-utils
   - sudo apt-get install libsdl2-dev  libsdl2-gfx-dev libsdl2-image-dev libsdl2-net-dev  libsdl2-ttf-dev
   - sudo apt-get install libwebp-dev zlib1g-dev libsmpeg-dev libtiff5-dev libpng12-dev libogg-dev libvorbis-dev 
